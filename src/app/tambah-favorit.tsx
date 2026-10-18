@@ -1,5 +1,9 @@
 // src/app/tambah-favorit.tsx
+<<<<<<< HEAD
 import { View, Text, Button, Alert } from "react-native";
+=======
+import { View, Text, Button } from "react-native";
+>>>>>>> 5fff38cefc0fa94e8da57b320deecdc7452ed64f
 import { router, useLocalSearchParams } from "expo-router";
 import { tambahFavorit } from "../services/favoritStorage";
 
@@ -12,6 +16,7 @@ export default function ModalTambahFavorit() {
   }>();
 
   async function simpan() {
+<<<<<<< HEAD
     // 1. Validasi sederhana: pastikan parameter tidak kosong
     if (!id || !nama || !lat || !lon) {
       Alert.alert("Error", "Data kota tidak lengkap atau tidak valid.");
@@ -46,6 +51,21 @@ export default function ModalTambahFavorit() {
         {/* Tambahan tombol batal agar user bisa keluar dari modal tanpa menyimpan */}
         <Button title="Batal" color="red" onPress={() => router.back()} />
       </View>
+=======
+    await tambahFavorit({
+      id: Number(id),
+      nama,
+      latitude: Number(lat),
+      longitude: Number(lon),
+    });
+    router.back();
+  }
+
+  return (
+    <View style={{ padding: 16, gap: 16 }}>
+      <Text>Tambahkan {nama} ke daftar favorit?</Text>
+      <Button title="Simpan" onPress={simpan} />
+>>>>>>> 5fff38cefc0fa94e8da57b320deecdc7452ed64f
     </View>
   );
 }
